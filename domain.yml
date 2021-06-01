@@ -1,0 +1,106 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- mailing
+- restaurant_search
+- goodbye
+- affirm
+- greet
+- stop
+- reject
+entities:
+- cuisine
+- location
+- mail_id
+- mailing
+- people
+- price
+slots:
+  cuisine:
+    type: text
+    influence_conversation: true
+  location:
+    type: text
+    influence_conversation: true
+  price:
+    type: text
+    influence_conversation: true
+  mail_id:
+    type: text
+    influence_conversation: true
+  check_resp:
+    type: bool
+    influence_conversation: true
+responses:
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Italian
+      title: Italian
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    - payload: Mexican
+      title: Mexican
+    - payload: American
+      title: American
+    text: Please choose your preferred cuisine.
+  utter_ask_how_can_i_help:
+  - text: Ask "Aahara-Bot" Anything.
+  - text: Welcome to "Aahara-Bot".
+  utter_ask_location:
+  - text: Please choose your preferred city for restaurants. (Tier-1 and Tier-2 cities Only)
+  - text: Please type in your city for restaurants. (only Tier-1 and Tier-2 cities supported)
+  utter_default:
+  - text: Sorry, I don't get you.
+  - text: Sorry, I can't understand you.
+  utter_goodbye:
+  - text: C u again!!
+  - text: Aahara sees You Again!!
+  - text: Thanks for visiting Aahara!!
+  - text: Come back soon!!
+  - text: Take Care!!
+  - text: Do visit us again !!
+  utter_greet:
+  - text: Hey there! Welcome to Aahara!! How may i help you?
+  - text: Hi, Welcome to Aahara!! How can I help you?
+  - text: Hey, Welcome to Aahara!! Ask me.
+  utter_ask_price:
+  - buttons:
+    - payload: Lesser than Rs. 300
+      title: Lesser than Rs. 300
+    - payload: Rs. 300 to Rs. 700
+      title: Rs. 300 to Rs. 700
+    - payload: More than Rs. 700
+      title: More than Rs. 700
+    text: Please choose average price range for two people?
+  utter_ask_mail_id:
+  - text: I can send you top 10 restaurants to your email id. Please type your email id.
+  - text: I can send you the list of restaurants via email. Please give your email id.
+  utter_mailed_you:
+  - text: Mailed your prefered top 10 restaurants to given email id.
+  - text: Mailed the list of restaurants to given email id.
+  - text: Sent email with the list of restaurants.
+  utter_end_session:
+  - text: Can we end here?
+  utter_show_restaurants:
+  - text: Showing your restaurants..
+  utter_rejection_acceptance:
+  - text: Got it. Any further help?
+actions:
+- action_check_loc
+- action_search_restaurants
+- action_send_mail
+- utter_ask_cuisine
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_mail_id
+- utter_ask_price
+- utter_default
+- utter_goodbye
+- utter_greet
+- utter_show_restaurants
